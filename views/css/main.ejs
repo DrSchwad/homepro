@@ -1,0 +1,108 @@
+<style type="text/css">
+	#pages-container > .page-container > .body > .mid {
+	    display: inline-block;
+	    position: relative;
+	    height: 100%;
+	    padding: 0;
+	    text-align: center;
+	    vertical-align: top;
+	    overflow: hidden;
+	}
+	
+	#logo-container {
+		display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc((100% - 50pt - 106pt) / 4 + 50pt);
+        padding-bottom: 40pt;
+        z-index: 1;
+        background: linear-gradient(0deg, rgba(255,255,255,0) 0%, #FFF 40pt, #FFF 100%);
+    }
+    #logo-img {
+        display: block;
+        margin: 25pt 0 25pt 50pt;
+        width: 87.5pt;
+    }
+    .left-btn {
+        transition: color .2s ease-in-out, background-color .2s ease-in-out;
+        background-color: #FFF;
+    }
+    .left-btn:hover {
+        background-color: #D7494D;
+        color: #FFF;
+        cursor: pointer;
+    }
+    .dot {
+	    color: #D7494D;
+    }
+
+    #pages-container {
+        display: inline-block;
+        width: calc(100% - 106pt);
+    }
+    section {
+        width: 100%;
+        padding: 0 0 0 50pt;
+        margin: 0;
+    }
+    .body {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    #right {
+        position: absolute;
+        display: inline-block;
+        height: 100%;
+        width: 106pt;
+        text-align: center;
+        vertical-align: top;
+    }
+    #hamburger-container {
+	    position: absolute;
+	    top: 0;
+	    right: 43pt;
+	    height: 80pt;
+	    width: 20pt;
+	    line-height: 80pt;
+	    z-index: 1;
+	    cursor: pointer;
+    }
+    #table-wrapper {
+        display: table;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+    }
+    #nav-bullets {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .bullet-container {
+        height: 5.25pt;
+        width: 100%;
+        margin-bottom: 8.5pt;
+        text-align: center;
+        cursor: pointer;
+    }
+    .bullet-container:last-child {
+        margin-bottom: 0;
+    }
+    .nav-bullet {
+        display: inline-block;
+        height: 5.25pt;
+        width: 5.25pt;
+        border-radius: 50%;
+        border: 1px solid #979797;
+        vertical-align: top;
+        transition: background-color 1s ease-in-out;
+    }
+    .bullet-container.active .nav-bullet {
+        background-color: #979797;
+    }
+</style>

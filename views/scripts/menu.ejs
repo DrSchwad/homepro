@@ -1,0 +1,14 @@
+<script type="text/javascript">
+	$(function() {
+		$('#menu').css('display', 'none');
+		$('#hamburger-container').on('click', function() {
+			$(this).toggleClass('open');
+			if ($(this).hasClass('open')) $('#menu').css('opacity', '1').fadeIn('fast');
+			else $('#menu').fadeOut('fast');
+		});
+		$('#menu').on('click', function() {
+			$('#hamburger-container').removeClass('open');
+			$(this).fadeOut('fast');
+		});
+	});
+</script>

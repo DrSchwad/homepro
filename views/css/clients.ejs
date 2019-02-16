@@ -1,0 +1,142 @@
+<style type="text/css">
+    #clients > .hex-wrapper {
+        position: absolute;
+        top: 13.5%;
+        left: 10%;
+        width: 66.5%;
+        height: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * 920 / 991);
+    }
+    #clients .hex-wrapper > .hex-outer-container {
+        position: absolute;
+        height: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * .24 * 546 / 486);
+        width: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * .24);
+        cursor: pointer;
+    }
+    #clients .hex-wrapper .hex-inner-container {
+        position: relative;
+        width: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * .24);
+    }
+    #clients .hex-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * .24 * 546 / 486);
+        width: calc((100vw - 50pt - 106pt) * 9 / 12 * .665 * .24);
+
+        -webkit-backface-visibility: hidden;
+        /* -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden; */
+    }
+    #clients .hex-wrapper > .hex1 {
+        top: 0;
+        left: 0;
+    }
+    #clients .hex-wrapper > .hex2 {
+        top: 23.00%;
+        left: 12.50%;
+    }
+    #clients .hex-wrapper > .hex3 {
+        top: 23.00%;
+        left: 37.25%;
+    }
+    #clients .hex-wrapper > .hex4 {
+        top: 23.00%;
+        left: 62.00%;
+    }
+    #clients .hex-wrapper > .hex5 {
+        top: 46.25%;
+        left: 24.80%;
+    }
+    #clients .hex-wrapper > .hex6 {
+        top: 46.25%;
+        left: 49.65%;
+    }
+    #clients .hex-wrapper > .hex7 {
+        top: 46.25%;
+        left: 74.40%;
+    }
+    #clients .hex-wrapper > .hex8 {
+        top: 69.40%;
+        left: 62.00%;
+    }
+    /* Make the back side face backwards initially */
+    #clients .hex-wrapper .back {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+
+    /* When the cursor is over, wait for 1 second and then start adding shadow */
+    #clients .hex-wrapper > .hex-outer-container.over .back {
+        animation-name: addshadow;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    /* When the cursor is out, don't wait and start removing the shadow immediately */
+    #clients .hex-wrapper > .hex-outer-container.out .back {
+        animation-name: removeshadow;
+        animation-duration: 1s;
+        animation-delay: 0;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes addshadow {
+      from { filter: drop-shadow(0 0 0 #00000033); }
+      to { filter: drop-shadow(10px 20px 30px #00000033); }
+    }
+    @-webkit-keyframes removeshadow {
+      from { filter: drop-shadow(10px 20px 30px #00000033); }
+      to { filter: drop-shadow(0 0 0 #00000033); }
+    }
+    /* When the cursor is over, scale the outer container */
+    #clients .hex-wrapper > .hex-outer-container.over {
+        -webkit-transform: scale(1.2, 1.2);
+        -moz-transform: scale(1.2, 1.2);
+        -o-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+    }
+    /* When the cursor is over, rotate the inner container */
+    #clients .hex-wrapper > .hex-outer-container.over > .hex-inner-container {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    /* Set the rotate and scale transition durations to 1 second */
+    #clients .hex-wrapper > .hex-outer-container, #clients .hex-wrapper > .hex-outer-container > .hex-inner-container {
+        -webkit-transition-duration: 1s;
+        -webkit-transform-style: preserve-3d;
+
+        -moz-transition-duration: 1s;
+        -moz-transform-style: preserve-3d;
+      
+        -o-transition-duration: 1s;
+        -o-transform-style: preserve-3d;
+
+        transition-duration: 1s;
+        transform-style: preserve-3d;
+
+        transform-origin: center;
+    }
+    /* When the cursor is out, wair for 1 second and then rotate the inner container */
+    #clients .hex-wrapper > .hex-outer-container.out > .hex-inner-container {
+        transition-delay: 1s;
+    }
+    /* When the cursor is over, don't wait and rotate the inner container immediately */
+    #clients .hex-wrapper > .hex-outer-container.over > .hex-inner-container {
+        transition-delay: 0s;
+    }
+    /* When the cursor is over, wait for 1 second and then scale the outer container */
+    #clients .hex-wrapper > .hex-outer-container.over {
+        transition-delay: 1s;
+    }
+    /* When the cursor is out, don't wait and scale the outer container immediately */
+    #clients .hex-wrapper > .hex-outer-container.out {
+        transition-delay: 0s;
+    }
+</style>

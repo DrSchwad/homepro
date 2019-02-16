@@ -1,0 +1,13 @@
+<script type="text/javascript">	
+	$(function() {
+		var $hexContainers = $('#clients .hex-wrapper > .hex-outer-container');
+		$hexContainers.on('mouseenter', function() {
+			$(this).removeClass('out').addClass('over');
+			$hexContainers.css('z-index', 0);
+			$(this).css('z-index', 10);
+		});
+		$hexContainers.on('mouseleave', function() {
+			$(this).removeClass('over').addClass('out');
+		});
+	});
+</script>

@@ -1,0 +1,78 @@
+<script type="text/javascript">
+	function hideTexts() {
+		$('#sister').find('.text-shadow, img').css('opacity', '0');
+	}
+	function showTexts() {
+		setTimeout(function() {
+			$('#sister').find('.text-shadow, img').css('opacity', '1')
+		}, 600);
+	}
+	$(function() {
+		$('#top-surface, #top-text-img').on('mouseover', function() {
+			$('#cube-container > #top-text-img').css({
+				'top': '9.0%',
+				'left': '33%',
+				'width': '32%'
+			});
+			$('#cube-container > #top-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .035)',
+				'text-shadow': '0 0 20px #862038'
+			});
+		});
+		$('#top-surface, #top-text-img').on('mouseleave', function() {
+			$('#cube-container > #top-text-img').css({
+				'top': '15.5%',
+				'left': '35%',
+				'width': '28%'
+			});
+			$('#cube-container > #top-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .033)',
+				'text-shadow': 'none'
+			});
+		});
+		$('#left-surface, #left-text-img').on('mouseover', function() {
+			$('#cube-container > #left-text-img').css({
+				'top': '61%',
+				'left': '13.5%',
+				'width': '19%'
+			});
+			$('#cube-container > #left-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .035)',
+				'text-shadow': '0 0 20px #297ED5'
+			});
+		});
+		$('#left-surface, #left-text-img').on('mouseleave', function() {
+			$('#cube-container > #left-text-img').css({
+				'top': '59%',
+				'left': '19%',
+				'width': '17%'
+			});
+			$('#cube-container > #left-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .033)',
+				'text-shadow': 'none'
+			});
+		});
+		$('#right-surface, #right-text-img').on('mouseover', function() {
+			$('#cube-container > #right-text-img').css({
+				'top': '58.5%',
+				'left': '65%',
+				'width': '25%'
+			});
+			$('#cube-container > #right-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .035)',
+				'text-shadow': '0 0 20px #39A844'
+			});
+		});
+		$('#right-surface, #right-text-img').on('mouseleave', function() {
+			$('#cube-container > #right-text-img').css({
+				'top': '57%',
+				'left': '61%',
+				'width': '23.5%'
+			});
+			$('#cube-container > #right-surface > .text-shadow').css({
+				'font-size': 'calc((100vw - 50pt - 106pt) * .033)',
+				'text-shadow': 'none'
+			});
+		});
+	});
+</script>

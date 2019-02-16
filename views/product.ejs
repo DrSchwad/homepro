@@ -1,0 +1,76 @@
+<!-- views/product.ejs -->
+
+<!doctype html>
+<html prefix="og: http://ogp.me/ns#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<title>Product page</title>
+	<%- include meta.ejs %>
+	<script type="text/javascript">
+		var total = <%= total %>;
+		var at = <%= at %>;
+		var categories = [];
+		<% categories.forEach(function(category){ %>
+			categories.push({name: "<%= category.name %>", till: <%= category.till %>});
+		<%  }); %>
+		var dimensions = [];
+		<% dimensions.forEach(function(dimension){ %>
+			dimensions.push({height: "<%= dimension.height %>", width: <%= dimension.width %>});
+		<%  }); %>
+	</script>
+</head>
+<body>
+<div id="navbar">
+	<a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
+	<div id="nav-menu">
+		<a href="/product/All" class="nav-item <% if (category === "All") { %>selected<% } %>">All</a>
+		<a href="/product/Chair and Bar Tool" class="nav-item <% if (category === "Chair and Bar Tool") { %>selected<% } %>">Chair and Bar Tool</a>
+		<a href="/product/Dining" class="nav-item <% if (category === "Dining") { %>selected<% } %>">Dining</a>
+		<a href="/product/Kitchen" class="nav-item <% if (category === "Kitchen") { %>selected<% } %>">Kitchen</a>
+		<a href="/product/Showpiece" class="nav-item <% if (category === "Showpiece") { %>selected<% } %>">Showpiece</a>
+		<a href="/product/Sofa Set" class="nav-item <% if (category === "Sofa Set") { %>selected<% } %>">Sofa Set</a>
+		<a href="/product/Wall Decoration" class="nav-item <% if (category === "Wall Decoration") { %>selected<% } %>">Wall Decoration</a>
+		<a href="/product/Wallpaper" class="nav-item <% if (category === "Wallpaper") { %>selected<% } %>">Wallpaper</a>
+	</div>
+	<div id="hamburger-container">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<div id="body">
+	<div id="body-content">
+		<div id="breadcrumb"><a href="#" class="category"></a>/<a href="#" class="product-name">table plant green</a></div>
+		<div id="product-wrapper">
+			<div id="product-info">
+				<div class="tag">Imported</div>
+				<div class="header">Table Plant Green</div>
+				<div class="sub-header">Green</div>
+			</div><!--
+			--><div id="product-picture">
+				<div class="image"></div>
+				<div id="up-arrow"><img src="/img/product/up-arrow-grey.png" /></div>
+				<div id="down-arrow"><img src="/img/product/down-arrow-grey.png" /></div>
+			</div><!--
+			--><div id="product-nav"></div>
+			<div id="product-details-box">
+				<div class="border"></div>
+				To order or know more details about this product call 01918181818
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="left">Copyright 2018 <span>homePro</span></div>
+		<div class="right">Contact Us</div>
+	</div>
+</div>
+<%- include partials/menu.ejs %>
+
+<%- include css/common.ejs %>
+<%- include scripts/common.ejs %>
+<%- include css/product.ejs %>
+<%- include scripts/product.ejs %>
+<%- include css/menu.ejs %>
+<%- include scripts/menu.ejs %>
+</body>
+</html>

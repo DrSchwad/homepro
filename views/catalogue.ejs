@@ -1,0 +1,50 @@
+<!-- views/catalogue.ejs -->
+
+<!doctype html>
+<html prefix="og: http://ogp.me/ns#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <title>Catalogue page</title>
+    <%- include meta.ejs %>
+</head>
+<body>
+    <div id="navbar">
+        <a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
+        <div id="nav-menu">
+            <span data-categoryid="0" class="nav-item selected">All</span>
+            <span data-categoryid="1" class="nav-item">Chair and Bar Tool</span>
+            <span data-categoryid="2" class="nav-item">Dining</span>
+            <span data-categoryid="3" class="nav-item">Kitchen</span>
+            <span data-categoryid="4" class="nav-item">Showpiece</span>
+            <span data-categoryid="5" class="nav-item">Sofa Set</span>
+            <span data-categoryid="6" class="nav-item">Wall Decoration</span>
+            <span data-categoryid="7" class="nav-item">Wallpaper</span>
+        </div>
+        <div id="hamburger-container">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div id="background-header"><img src="img/imgmin/catalogue/header.png" /></div>
+    <div id="body">
+        <div id="header-text">
+            <div>All Furnitures</div>
+            <div>One page</div>
+        </div>
+        <div id="header-search">
+            <img src="img/catalogue/search-icon.png" />
+            <input id="search-text" placeholder="search furniture" />
+        </div>
+        <div id="body-content"></div>
+    </div>
+    <%- include partials/menu.ejs %>
+
+    <%- include css/common.ejs %>
+    <%- include scripts/common.ejs %>
+    <%- include css/catalogue.ejs %>
+    <%- include scripts/catalogue.ejs %>
+    <%- include css/menu.ejs %>
+    <%- include scripts/menu.ejs %>
+</body>
+</html>

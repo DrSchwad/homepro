@@ -1,0 +1,122 @@
+<style type="text/css">
+    #room > img {
+        position: absolute;
+        top: calc(50vh - ((100vw - 50pt - 106pt) * 9 / 12 * 0.55 * 1698 / 1512 / 2));
+        left: 22%;
+        width: 50%;
+        filter: drop-shadow(130px 1000px 4px #000);
+    }
+    #room > .hex-wrapper {
+        position: absolute;
+        top: calc(50vh - ((100vw - 50pt - 106pt) * 9 / 12 * 0.55 * 1698 / 1512 / 2));
+        left: 22%;
+        width: 50%;
+        height: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55 * 1698 / 1512);
+    }
+    #room > .hex-shadow-wrapper {
+        position: absolute;
+        top: calc(50vh - ((100vw - 50pt - 106pt) * 9 / 12 * 0.55 * 1698 / 1512 / 2 * .99));
+        left: 16%;
+        width: 50%;
+        height: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55 * 1698 / 1512);
+		z-index: -1;
+    }
+    #room .hex-wrapper > .hex-container {
+        width: 34.6%;
+		transition: 1s;
+    }
+	#room .hex-wrapper > .hex-container:hover {
+		-webkit-transform: scale(1.2, 1.2);
+        -moz-transform: scale(1.2, 1.2);
+        -o-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+		cursor: pointer;
+	}
+    #room .hex-shadow-wrapper > img {
+        width: 55%;
+    }
+    #room .hex-wrapper > .hex-container > .text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 18.5pt;
+        text-align: center;
+        z-index: 1;
+    }
+    #room .hex-wrapper > .hex-container > .text > span {
+		display: inline-block;
+        font-size: 15pt;
+        line-height: 18.5pt;
+        font-weight: 500;
+        color: #58667B;
+        padding: 0 8pt;
+        background-color: #FFF;
+    }
+    #room .hex-wrapper > .hex-container > img {
+        width: 100%;
+    }
+    #room .hex-wrapper > .hex1, #room .hex-shadow-wrapper > .hex1 {
+        position: absolute;
+        top: 6.4%;
+        left: -16.5%;
+    }
+    #room .hex-wrapper > .hex1 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 862 / 770 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex2, #room .hex-shadow-wrapper > .hex2 {
+        position: absolute;
+        top: 34.8%;
+        left: 2%;
+    }
+    #room .hex-wrapper > .hex2 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 862 / 770 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex3, #room .hex-shadow-wrapper > .hex3 {
+        position: absolute;
+        top: 36.5%;
+        left: -35.86%;
+    }
+    #room .hex-wrapper > .hex3 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex4, #room .hex-shadow-wrapper > .hex4 {
+        position: absolute;
+        top: 70.5%;
+        left: -10.75%;
+    }
+    #room .hex-wrapper > .hex4 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex5, #room .hex-shadow-wrapper > .hex5 {
+        position: absolute;
+        top: -3.5%;
+        left: 56.13%;
+    }
+    #room .hex-wrapper > .hex5 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex6, #room .hex-shadow-wrapper > .hex6 {
+        position: absolute;
+        top: 25.74%;
+        left: 80.4%;
+    }
+    #room .hex-wrapper > .hex6 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt - 9.25pt);
+	}
+    #room .hex-wrapper > .hex7, #room .hex-shadow-wrapper > .hex7 {
+        position: absolute;
+        top: 54%;
+        left: 53.73%;
+    }
+    #room .hex-wrapper > .hex7 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt);
+	}
+    #room .hex-wrapper > .hex8, #room .hex-shadow-wrapper > .hex8 {
+        position: absolute;
+        top: 52.5%;
+        left: 107.46%;
+    }
+	#room .hex-wrapper > .hex8 > .text {
+        top: calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt);
+	}
+    </style>

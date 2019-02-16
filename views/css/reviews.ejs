@@ -1,0 +1,126 @@
+<style type="text/css">
+	#reviews > .reviewers {
+		position: absolute;
+        top: 28%;
+        left: 0;
+        height: 250pt;
+        width: 116pt;
+	}
+	#reviews .reviewers > img {
+		margin-bottom: 24pt;
+		width: 100%;
+	}
+	#reviews .reviewers > img:nth-child(3) {
+		width: 105pt;
+	}
+	#reviews .reviewers > img:nth-child(4) {
+		width: 77pt;
+	}
+	#reviews .reviews-img {
+		position: absolute;
+        left: calc(116pt + 24pt);
+        top: 20.2%;
+        height: 65vh;
+        width: calc(65vh * 1210 / 1628);
+        z-index: 2;
+		transition: all .5s ease-in-out;		
+	}
+	#reviews .reviews-img-blurred {
+		position: absolute;
+        left: calc(116pt + 24pt - 8vh);
+        top: 20%;
+        height: 80vh;
+        width: calc(80vh * 1718 / 2112);
+        z-index: 0;
+		transition: all .5s ease-in-out;		
+	}
+	#reviews .review-text-bg {
+		position: absolute;
+        top: 28%;
+        left: calc(116pt + 24pt + 65vh * 1210 / 1628 - 100pt);
+        height: 255pt;
+        width: 365pt;
+        z-index: 1;
+        background: #F5F5F5;
+	}
+	#reviews .review-text {
+		position: absolute;
+        top: 28%;
+        left: calc(116pt + 24pt + 65vh * 1210 / 1628 - 100pt);
+        height: 255pt;
+        width: 365pt;
+		padding-left: 100pt;
+        z-index: 3;
+        background: transparent;
+        text-align: left;
+	}
+	#reviews .review-text > .text-container > .header {
+		font-size: 40pt;
+        line-height: 40pt;
+        font-family: Proxima Nova;
+        font-weight: bold;
+        color: #E93947;
+        margin: 40pt 0 0 42pt;
+	}
+	#reviews .review-text > .text-container > .text {
+		font-size: 9pt;
+        line-height: 15pt;
+        letter-spacing: 0.27px;
+        color: #58667B;
+        margin-left: 44pt;
+		max-width: 70%;
+		transition: all .5s ease-in-out;
+	}
+	#reviews .review-text > .reviewer {
+		margin: 7pt 0 0 -7pt;
+	}
+	#reviews .reviewer > .name {
+		display: inline-block;
+        font-size: 11pt;
+        line-height: 13.5pt;
+        font-weight: 500;
+        color: #FFF;
+        text-align: center;
+        padding: 7pt 13.5pt;
+        background-color: #E93947;
+		transition: all .5s ease-in-out;
+	}
+	#reviews .reviewer > .about {
+        display: inline-block;
+        font-size: 9pt;
+        line-height: 15pt;
+        font-weight: 500;
+        color: #58667B;
+        letter-spacing: 0.27px;
+        margin-left: 13pt;
+		transition: all .5s ease-in-out;
+    }
+    #reviews .review-text > .navigation {
+    	height: 15pt;
+        position: absolute;
+        bottom: 23pt;
+        right: 31pt;
+    }
+    #reviews .navigation > .nav-button {
+    	display: inline-block;
+        height: 15pt;
+        width: 15pt;
+        text-align: center;
+        border: 1px solid #B2B2B2;
+        vertical-align: top;
+		cursor: pointer;
+		transition: all .25s ease-in-out;
+    }
+    #reviews .navigation > .nav-button:last-child {
+    	margin-left: 5.5pt;
+    }
+	#reviews .navigation > .nav-button:hover {
+		background-color: #B2B2B2;
+	}
+    #reviews .nav-button > img {
+    	height: 5pt;
+        width: 2.5pt;
+        margin-top: 5pt;
+        vertical-align: top;
+    }
+</style>

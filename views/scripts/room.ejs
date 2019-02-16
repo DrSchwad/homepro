@@ -1,0 +1,18 @@
+<script type="text/javascript">
+	var vAlignTextsInsideSmallHex = function() {
+		var $hex5 = $('#room .hex-wrapper > .hex5');
+		var $hex5Text = $hex5.find('> .text');
+		if ($hex5.css('width') === $hex5Text.find('> span').css('width')) {
+			$hex5Text.css('top',
+			'calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt - 9.25pt)');
+		}
+		else {
+			$hex5Text.css('top',
+			'calc((100vw - 50pt - 106pt) * 9 / 12 * 0.55   * .346 * 602 / 530 / 2 - 9.25pt)');
+		}
+	}
+	$(function() {
+		vAlignTextsInsideSmallHex();
+	});
+	$(window).resize(vAlignTextsInsideSmallHex);
+</script>

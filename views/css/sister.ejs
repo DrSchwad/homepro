@@ -1,0 +1,86 @@
+<style type="text/css">
+	#sister {
+		text-align: center;
+	}
+	#cube-container {
+		position: relative;
+		display: inline-block;
+		height: calc((100vw - 50pt - 106pt) * .35);
+		width: calc((100vw - 50pt - 106pt) * .35);
+		margin-top: calc((100vh - (100vw - 50pt - 106pt) * .35) / 2);
+	}
+	#cube-container > #top-text-img {
+		position: absolute;
+		top: 15.5%;
+		left: 35.0%;
+		width: 28%;
+		z-index: 1;
+		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
+		cursor: pointer;
+	}
+	#cube-container > #left-text-img {
+		position: absolute;
+		top: 59%;
+		left: 19.0%;
+		width: 17%;
+		z-index: 1;
+		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
+		cursor: pointer;
+	}
+	#cube-container > #right-text-img {
+		position: absolute;
+		top: 57%;
+		left: 61.0%;
+		width: 23.5%;
+		z-index: 1;
+		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
+		cursor: pointer;
+	}
+	#cube-container > div > .text-shadow {
+		display: table-cell;
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		font-weight: 500;
+		color: #00000005;
+		font-size: calc((100vw - 50pt - 106pt) * .033);
+		text-shadow: none;
+		transition: .5s;
+	}
+	#cube-container > div:hover {
+		cursor: pointer;
+	}
+	#top-surface {
+		display: table;
+		position: absolute;
+		top: -4.25%;
+		left: 19.25%;
+		height: 61.5%;
+		width: 61.5%;
+		border-radius: 10% 10%;
+		background-image: linear-gradient(to bottom left, #EA3D77, #EB8864);
+		transform: rotateX(55deg) rotateY(0deg) rotateZ(45deg);
+	}
+	#left-surface {
+		display: table;
+		position: absolute;
+		bottom: 5%;
+		left: -2%;
+		height: 60%;
+		width: 60%;
+		border-radius: 10% 10%;
+		background-image: linear-gradient(to top, #4B8EE4, #56D5E8);
+		transform: rotateX(35deg) rotateY(45deg) rotateZ(0deg);
+	}
+	#right-surface {
+		display: table;
+		position: absolute;
+		bottom: 5%;
+		right: -2%;
+		height: 60%;
+		width: 60%;
+		border-radius: 10% 10%;
+		background-image: linear-gradient(to top, #3EC690, #77D86B);
+		transform: rotateX(-35deg) rotateY(45deg) rotateZ(0deg);
+	}
+</style>
