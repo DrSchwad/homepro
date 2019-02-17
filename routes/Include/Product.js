@@ -32,13 +32,14 @@ var sizeOf = Promise.promisify(require('image-size'));
 
 /* Returns total products under this category */
 var getProducts = function(category, productNo) {
-	var queryString = "SELECT name, total_items FROM "+ dbConfig.productCategories + " WHERE name = ?", queryParams = [category];
+	var queryString = "SELECT id, name, total_items FROM "+ dbConfig.productCategories + " WHERE name = ?", queryParams = [category];
 	if (category === "All") {
 		queryString = "SELECT name, total_items FROM "+ dbConfig.productCategories;
 		queryParams = [];
 	}
 	var ret = {
 		totalProducts: 0,
+		categoryId: 0,
 		categories: [],
 		dimensions: []
 	};
@@ -48,6 +49,7 @@ var getProducts = function(category, productNo) {
 		})
 		.then(function(rows) {
 			if (category !== "All" && rows.length !== 1) throw "Category not found!";
+			if (category !== "All") ret.categoryId = rows[0].id;
 			var dimensionsToGet = [];
 			for (var i = 0; i < rows.length; i++) {
 				ret.totalProducts += rows[i]['total_items'];

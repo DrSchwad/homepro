@@ -18,7 +18,7 @@ router.get('/product/:cat/:item', function(req, res) {
 		if (products.totalProducts !== false) res.render('product', {
 			at: req.params['item'],
 			total: products.totalProducts,
-			category: req.params['cat'],
+			categoryId: products.categoryId,
 			categories: products.categories,
 			dimensions: products.dimensions
 		});

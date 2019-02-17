@@ -22,14 +22,15 @@
 <div id="navbar">
 	<a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
 	<div id="nav-menu">
-		<a href="/catalogue/All" class="nav-item <% if (category === "All") { %>selected<% } %>">All</a>
-		<a href="/catalogue/Chair and Bar Tool" class="nav-item <% if (category === "Chair and Bar Tool") { %>selected<% } %>">Chair and Bar Tool</a>
-		<a href="/catalogue/Dining" class="nav-item <% if (category === "Dining") { %>selected<% } %>">Dining</a>
-		<a href="/catalogue/Kitchen" class="nav-item <% if (category === "Kitchen") { %>selected<% } %>">Kitchen</a>
-		<a href="/catalogue/Showpiece" class="nav-item <% if (category === "Showpiece") { %>selected<% } %>">Showpiece</a>
-		<a href="/catalogue/Sofa Set" class="nav-item <% if (category === "Sofa Set") { %>selected<% } %>">Sofa Set</a>
-		<a href="/catalogue/Wall Decoration" class="nav-item <% if (category === "Wall Decoration") { %>selected<% } %>">Wall Decoration</a>
-		<a href="/catalogue/Wallpaper" class="nav-item <% if (category === "Wallpaper") { %>selected<% } %>">Wallpaper</a>
+		<a href="/catalogue/All" class="nav-item <% if (categoryId === 0) { %>selected<% } %>">All</a>
+		<a href="/catalogue/Bedroom" class="nav-item <% if (categoryId === 1) { %>selected<% } %>">Bedroom</a>
+		<a href="/catalogue/Dining" class="nav-item <% if (categoryId === 2) { %>selected<% } %>">Dining</a>
+		<a href="/catalogue/Hardware" class="nav-item <% if (categoryId === 3) { %>selected<% } %>">Hardware</a>
+		<a href="/catalogue/Home Decor" class="nav-item <% if (categoryId === 4) { %>selected<% } %>">Home Decor</a>
+		<a href="/catalogue/Kitchen" class="nav-item <% if (categoryId === 5) { %>selected<% } %>">Kitchen</a>
+		<a href="/catalogue/Painting" class="nav-item <% if (categoryId === 6) { %>selected<% } %>">Painting</a>
+		<a href="/catalogue/Office furniture" class="nav-item <% if (categoryId === 7) { %>selected<% } %>">Office furniture</a>
+		<a href="/catalogue/Sofa" class="nav-item <% if (categoryId === 8) { %>selected<% } %>">Sofa</a>
 	</div>
 	<div id="hamburger-container">
 		<span></span>
