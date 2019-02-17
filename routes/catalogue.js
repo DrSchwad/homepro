@@ -8,8 +8,19 @@ var Catalogue = require('./Include/Catalogue');
  * GET Catalogue Page
  */
 router.get('/catalogue', function(req, res) {
-	res.render('catalogue');
+	res.render('catalogue', {
+		category: 0
+	});
 });
+router.get('/catalogue/:cat', function(req, res) {
+	Catalogue.getCategoryId(req.params['cat']).then(function (category) {
+		if (category !== false) res.render('catalogue', {
+			category: category
+		});
+		else res.redirect('/404');
+	});
+});
+
 
 /**
  * GET Products Data

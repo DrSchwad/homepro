@@ -18,7 +18,7 @@
 			method: "POST",
 			success: function (data) {
 				products = data;
-				refreshProducts(0);
+				refreshProducts(category);
 			},
 			error: function (res) {
 				console.log("Error!", res.responseText);

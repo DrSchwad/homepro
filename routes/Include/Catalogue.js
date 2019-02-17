@@ -71,6 +71,23 @@ var getProducts = function() {
 		});
 };
 
+var getCategoryId = function(category) {
+	if (category === "All") return Promise.resolve(0);
+	return handleDisconnect()
+		.then(function() {
+			return connection.queryAsync("SELECT id FROM " + dbConfig.productCategories + " WHERE name = ?", [category]);
+		})
+		.then(function(rows) {
+			if (rows.length !== 1) throw "Category not found!";
+			return parseInt(rows[0]['id']);
+		})
+		.catch(function (e) {
+			console.log(e);
+			return false;
+		});
+};
+
 module.exports = {
-	getProducts: getProducts
+	getProducts: getProducts,
+	getCategoryId: getCategoryId
 };
