@@ -10,6 +10,7 @@
     </script>
 </head>
 <body>
+    <%- include loading.ejs %>
     <div id="navbar">
         <a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
         <div id="nav-menu">
@@ -19,9 +20,9 @@
             <span data-categoryid="3" class="nav-item <% if (category === 3) { %>selected<% } %>">Hardware</span>
             <span data-categoryid="4" class="nav-item <% if (category === 4) { %>selected<% } %>">Home Decor</span>
             <span data-categoryid="5" class="nav-item <% if (category === 5) { %>selected<% } %>">Kitchen</span>
-            <span data-categoryid="6" class="nav-item <% if (category === 6) { %>selected<% } %>">Painting</span>
-            <span data-categoryid="7" class="nav-item <% if (category === 7) { %>selected<% } %>">Sofa</span>
-            <span data-categoryid="8" class="nav-item <% if (category === 8) { %>selected<% } %>">Office furniture</span>
+            <span data-categoryid="6" class="nav-item <% if (category === 6) { %>selected<% } %>">Office Furniture</span>
+            <span data-categoryid="7" class="nav-item <% if (category === 7) { %>selected<% } %>">Painting</span>
+            <span data-categoryid="8" class="nav-item <% if (category === 8) { %>selected<% } %>">Sofa Set</span>
         </div>
         <div id="hamburger-container">
             <span></span>
@@ -50,5 +51,8 @@
     <%- include scripts/catalogue.ejs %>
     <%- include css/menu.ejs %>
     <%- include scripts/menu.ejs %>
+    <script type="text/javascript">
+	    $(window).on("load", function() {$('#loading').remove()});
+    </script>
 </body>
 </html>

@@ -66,7 +66,8 @@
 					padding: 10pt 17pt 10pt calc(2.4px + 17pt);
 					margin: 0;
 				" onclick="
-				<% if (page === 6) {%>window.location.href='https://www.google.com/maps/place/Block+%23+J,+15+Rd+No+27,+Dhaka+1212/'<% } %>
+				<% if (page === 1) {%>$('#pages-container').moveTo(2)<% } %>
+				<% if (page === 6) {%>window.open('https://www.google.com/maps/place/Block+%23+J,+15+Rd+No+27,+Dhaka+1212/')<% } %>
 				">
 					<% if (page === 1) {%> EXPLORE <% } %>
 					<% if (page === 6) {%> DIRECTION <% } %>

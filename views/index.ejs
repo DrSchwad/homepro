@@ -7,6 +7,7 @@
     <%- include meta.ejs %>
 </head>
 <body>
+	<%- include loading.ejs %>
     <a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
     <div id="pages-container">
         <section class="page-container">
@@ -39,8 +40,8 @@
         </section>
         <section class="page-container">
             <div class="body">
-                <% var page = 5; %>
-                <%- include partials/left.ejs %><!--
+			    <% var page = 5; %>
+			    <%- include partials/left.ejs %><!--
                 --><%- include partials/sister.ejs %>
             </div>
         </section>
@@ -73,6 +74,7 @@
     <%- include scripts/menu.ejs %>
     <script type="text/javascript">
 	    $(function() {$("#pages-container").moveTo(<%= scrollTo %>);})
+	    $(window).on("load", function() {$('#loading').remove()});
     </script>
 </body>
 </html>

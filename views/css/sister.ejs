@@ -9,31 +9,36 @@
 		width: calc((100vw - 50pt - 106pt) * .35);
 		margin-top: calc((100vh - (100vw - 50pt - 106pt) * .35) / 2);
 	}
+
 	#cube-container > #top-text-img {
 		position: absolute;
-		top: 15.5%;
-		left: 35.0%;
-		width: 28%;
+		top: 3.75%;
+		left: 25.75%;
+		width: 42%;
 		z-index: 1;
 		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
 		cursor: pointer;
 	}
 	#cube-container > #left-text-img {
 		position: absolute;
-		top: 59%;
-		left: 19.0%;
-		width: 17%;
+		top: 43%;
+		left: 6%;
+		width: 42%;
 		z-index: 1;
 		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
 		cursor: pointer;
 	}
 	#cube-container > #right-text-img {
 		position: absolute;
-		top: 57%;
-		left: 61.0%;
-		width: 23.5%;
+		top: 45.5%;
+		left: 51.0%;
+		width: 42%;
 		z-index: 1;
 		transition: top .5s, left .5s, width .5s, opacity 1s ease-in-out;
+		cursor: pointer;
+	}
+
+	#cube-container > div:hover {
 		cursor: pointer;
 	}
 	#cube-container > div > .text-shadow {
@@ -43,13 +48,17 @@
 		vertical-align: middle;
 		font-weight: 500;
 		color: #00000005;
-		font-size: calc((100vw - 50pt - 106pt) * .033);
 		text-shadow: none;
+		opacity: 0;
 		transition: .5s;
+		transform-origin: center;
 	}
-	#cube-container > div:hover {
-		cursor: pointer;
+	#cube-container > div > .text-shadow > .text {
+		position: absolute;
+		line-height: 40pt;
+		text-align: left;
 	}
+
 	#top-surface {
 		display: table;
 		position: absolute;
@@ -61,6 +70,15 @@
 		background-image: linear-gradient(to bottom left, #EA3D77, #EB8864);
 		transform: rotateX(55deg) rotateY(0deg) rotateZ(45deg);
 	}
+	#top-surface > .text-shadow {
+		font-size: calc((100vw - 50pt - 106pt) * .035);
+	}
+	#top-surface .text {
+		left: 16%;
+	}
+	#top-surface .text:first-child {top: calc((100vw - 50pt - 106pt) * .074);}
+	#top-surface .text:last-child {top: calc((100vw - 50pt - 106pt) * .109)}
+
 	#left-surface {
 		display: table;
 		position: absolute;
@@ -72,6 +90,16 @@
 		background-image: linear-gradient(to top, #4B8EE4, #56D5E8);
 		transform: rotateX(35deg) rotateY(45deg) rotateZ(0deg);
 	}
+	#left-surface > .text-shadow {
+		font-size: calc((100vw - 50pt - 106pt) * .030);
+	}
+	#left-surface .text {
+		left: 16%;
+	}
+	#left-surface .text:first-child {top: calc((100vw - 50pt - 106pt) * .048);}
+	#left-surface .text:nth-child(2){top: calc((100vw - 50pt - 106pt) * .080);}
+	#left-surface .text:last-child {top: calc((100vw - 50pt - 106pt) * .111)}
+
 	#right-surface {
 		display: table;
 		position: absolute;
@@ -83,4 +111,12 @@
 		background-image: linear-gradient(to top, #3EC690, #77D86B);
 		transform: rotateX(-35deg) rotateY(45deg) rotateZ(0deg);
 	}
+	#right-surface > .text-shadow {
+		font-size: calc((100vw - 50pt - 106pt) * .031);
+	}
+	#right-surface .text {
+		left: 18%;
+	}
+	#right-surface .text:first-child {top: calc((100vw - 50pt - 106pt) * .066);}
+	#right-surface .text:last-child {top: calc((100vw - 50pt - 106pt) * .096)}
 </style>

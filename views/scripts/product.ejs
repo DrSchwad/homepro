@@ -26,7 +26,7 @@
 			el.css('opacity', '0');
 			var currentImageDimensions = getImageDimensions(at);
 			var categoryIndex = getCategory(at);
-			$('#breadcrumb').find('> .category').html(categories[categoryIndex].name);
+			$('#breadcrumb').find('> .category').html(categories[categoryIndex].name).attr('href', '/catalogue/' + categories[categoryIndex].name);
 			clearTimeout(imageChangeTimeout);
 			imageChangeTimeout = setTimeout(function() {
 				el.css({

@@ -28,9 +28,9 @@
 		<a href="/catalogue/Hardware" class="nav-item <% if (categoryId === 3) { %>selected<% } %>">Hardware</a>
 		<a href="/catalogue/Home Decor" class="nav-item <% if (categoryId === 4) { %>selected<% } %>">Home Decor</a>
 		<a href="/catalogue/Kitchen" class="nav-item <% if (categoryId === 5) { %>selected<% } %>">Kitchen</a>
-		<a href="/catalogue/Painting" class="nav-item <% if (categoryId === 6) { %>selected<% } %>">Painting</a>
-		<a href="/catalogue/Office furniture" class="nav-item <% if (categoryId === 7) { %>selected<% } %>">Office furniture</a>
-		<a href="/catalogue/Sofa" class="nav-item <% if (categoryId === 8) { %>selected<% } %>">Sofa</a>
+		<a href="/catalogue/Office Furniture" class="nav-item <% if (categoryId === 6) { %>selected<% } %>">Office Furniture</a>
+		<a href="/catalogue/Painting" class="nav-item <% if (categoryId === 7) { %>selected<% } %>">Painting</a>
+		<a href="/catalogue/Sofa Set" class="nav-item <% if (categoryId === 8) { %>selected<% } %>">Sofa Set</a>
 	</div>
 	<div id="hamburger-container">
 		<span></span>
@@ -40,6 +40,7 @@
 	</div>
 </div>
 <div id="body">
+	<%- include loading.ejs %>
 	<div id="body-content">
 		<div id="breadcrumb"><a href="#" class="category"></a>/<a href="#" class="product-name">table plant green</a></div>
 		<div id="product-wrapper">
@@ -73,5 +74,8 @@
 <%- include scripts/product.ejs %>
 <%- include css/menu.ejs %>
 <%- include scripts/menu.ejs %>
+<script type="text/javascript">
+	$(window).on("load", function() {$('#loading').remove()});
+</script>
 </body>
 </html>
