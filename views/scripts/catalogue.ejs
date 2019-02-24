@@ -23,6 +23,9 @@
 			success: function (data) {
 				products = data;
 				refreshProducts(category);
+				if ((category !== 0) && (Object.keys(products[category]).length === 0)) {
+					$('#body-content').html('<div class="no-items">No items available right now.</div>');
+				}
 			},
 			error: function (res) {
 				console.log("Error!", res.responseText);
