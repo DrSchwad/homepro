@@ -49,7 +49,7 @@
 </div>
 <div id="body">
 	<%- include css/loading.ejs %>
-	<div id="loading" style="
+	<div class="loading" style="
 					position: fixed;
 					top: 0;
 					left: 0;
@@ -91,7 +91,7 @@
 <%- include css/menu.ejs %>
 <%- include scripts/menu.ejs %>
 <script type="text/javascript">
-	$(window).on("load", function() {$('#loading').remove()});
+	$(window).on("load", function() {$('.loading').remove()});
 </script>
 </body>
 </html>

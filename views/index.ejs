@@ -12,7 +12,7 @@
     <div id="pages-container">
         <section class="page-container">
             <div class="body">
-                <div id="loading" style="
+                <div class="loading" style="
 					position: fixed;
 					top: 0;
 					left: 0;
@@ -87,7 +87,7 @@
 		    var loadingCheckInterval = setInterval(function() {
 			    var elem = $('#home').find('> img');
 			    if (elem.height() === $(window).height()) {
-				    setTimeout(function() {$('#loading').remove();}, 100);
+				    setTimeout(function() {$('.loading').remove();}, 100);
 				    clearInterval(loadingCheckInterval);
 			    }
 		    }, 100);
