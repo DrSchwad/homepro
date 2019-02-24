@@ -144,9 +144,8 @@
 	}
 
 	#body > #body-content {
-		position: absolute;
-		top: 253.5pt;
-		left: 0;
+		position: relative;
+		margin-top: 253.5pt;
 		width: 100%;
 		text-align: center;
 	}
@@ -219,5 +218,24 @@
 		height: 300pt;
 		padding-top: 100pt;
 		text-align: center;
+	}
+
+	#footer {
+		position: relative;
+		height: 47pt;
+		width: 100%;
+		text-align: left;
+		font-size: 12pt;
+		color: #9FA8B4;
+	}
+	#footer > .left > span {
+		font-weight: bold;
+	}
+	#footer > .right {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: inline-block;
+		color: #9FA8B4;
 	}
 </style>
