@@ -46,6 +46,13 @@
 					500);
 				el.css('opacity', '1');
 			}, 500);
+			$('#product-info')
+				.find('> .header')
+					.html(titles[at])
+				.end()
+				.find('> .sub-header')
+					.html('#' + categoryCodes[categoryIndex] + (at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0)));
+			$('#breadcrumb').find('> .product-name').html(titles[at]);
 		}
 		for (var d = -1; d < Math.min(cycle - 1, total - 1); d++) {
 			var AT = (((at + total + d - 1) % total) + 1);

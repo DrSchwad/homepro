@@ -32,20 +32,39 @@ var sizeOf = Promise.promisify(require('image-size'));
 
 /* Returns total products under this category */
 var getProducts = function(category, productNo) {
-	var queryString = "SELECT id, name, total_items FROM "+ dbConfig.productCategories + " WHERE name = ?", queryParams = [category];
+	var queryString = "SELECT * FROM "+ dbConfig.productCategories + " WHERE name = ?", queryParams = [category];
 	if (category === "All") {
-		queryString = "SELECT name, total_items FROM "+ dbConfig.productCategories;
+		queryString = "SELECT * FROM "+ dbConfig.productCategories;
 		queryParams = [];
 	}
 	var ret = {
 		totalProducts: 0,
 		categoryId: 0,
 		categories: [],
+		categoryCodes: [],
+		titles: [''],
 		dimensions: []
 	};
 	return handleDisconnect()
 		.then(function() {
 			return connection.queryAsync(queryString, queryParams);
+		})
+		.then(function(rows) {
+			return Promise.resolve(rows)
+				.each(function(row) {
+					return handleDisconnect()
+						.then(function() {
+							return connection.queryAsync("SELECT title FROM " + dbConfig.products + " WHERE category = ?", [row.id]);
+						})
+						.then(function(titles) {
+							titles.forEach(function (title) {
+								ret.titles.push(title['title']);
+							});
+						});
+				})
+				.then(function() {
+					return rows;
+				})
 		})
 		.then(function(rows) {
 			if (category !== "All" && rows.length !== 1) throw "Category not found!";
@@ -57,6 +76,7 @@ var getProducts = function(category, productNo) {
 					name: rows[i].name,
 					till: ret.totalProducts
 				});
+				ret.categoryCodes.push(rows[i].code);
 				for (var j = 1; j <= rows[i]['total_items']; j++) dimensionsToGet.push({
 					id: j,
 					category: rows[i]['name']
@@ -84,5 +104,5 @@ var getProducts = function(category, productNo) {
 };
 
 module.exports = {
-	getProducts: 	getProducts
+	getProducts: getProducts
 };

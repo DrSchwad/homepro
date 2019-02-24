@@ -16,6 +16,14 @@
 		<% dimensions.forEach(function(dimension){ %>
 			dimensions.push({height: "<%= dimension.height %>", width: <%= dimension.width %>});
 		<%  }); %>
+		var categoryCodes = [];
+		<% categoryCodes.forEach(function(categoryCode){ %>
+			categoryCodes.push("<%=categoryCode%>");
+		<%  }); %>
+		var titles = [];
+		<% titles.forEach(function(title){ %>
+			titles.push("<%=title%>");
+		<%  }); %>
 	</script>
 </head>
 <body>
@@ -40,7 +48,15 @@
 	</div>
 </div>
 <div id="body">
-	<%- include loading.ejs %>
+	<%- include css/loading.ejs %>
+	<div id="loading" style="
+					position: fixed;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;">
+		<div class="loading-ellipsis"><div></div><div></div><div></div><div></div></div>
+	</div>
 	<div id="body-content">
 		<div id="breadcrumb"><a href="#" class="category"></a>/<a href="#" class="product-name">table plant green</a></div>
 		<div id="product-wrapper">

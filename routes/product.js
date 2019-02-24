@@ -20,6 +20,8 @@ router.get('/product/:cat/:item', function(req, res) {
 			total: products.totalProducts,
 			categoryId: products.categoryId,
 			categories: products.categories,
+			categoryCodes: products.categoryCodes,
+			titles: products.titles,
 			dimensions: products.dimensions
 		});
 		else res.redirect('/404');

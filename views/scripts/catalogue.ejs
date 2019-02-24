@@ -2,11 +2,15 @@
 	$(function () {
 		var $navItems = $('#nav-menu').find('> .nav-item');
 		$navItems.on('click', function () {
+			$('#body').find('> .loading').css('display', 'block');
 			$navItems.removeClass('selected');
 			$(this).addClass('selected');
 			var categoryId = $(this).data('categoryid');
 			$('#body-content').fadeOut('fast', function () {
 				$(this).html('');
+				if ((categoryId !== 0) && (Object.keys(products[categoryId]).length === 0)) {
+					$('#body-content').html('<div class="no-items">No items available right now.</div>');
+				}
 				refreshProducts(categoryId);
 				$(this).fadeIn('slow');
 			});
@@ -26,6 +30,7 @@
 		});
 
 		var showProducts = function(productsArray, totalProducts) {
+			$('#body').find('> .loading').css('display', 'none');
 			var $bodyContent = $('#body-content');
 			for (var i = 1; i <= totalProducts; i++) {
 				$bodyContent.append('' +

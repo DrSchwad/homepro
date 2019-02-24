@@ -7,11 +7,19 @@
     <%- include meta.ejs %>
 </head>
 <body>
-	<%- include loading.ejs %>
+	<%- include css/loading.ejs %>
     <a id="logo-container" href="/"><img id="logo-img" src="/img/static/logo.png" /></a>
     <div id="pages-container">
         <section class="page-container">
             <div class="body">
+                <div id="loading" style="
+					position: fixed;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;">
+                    <div class="loading-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
                 <% var page = 1; %>
                 <%- include partials/left.ejs %><!--
                 --><%- include partials/home.ejs %>
@@ -73,8 +81,17 @@
     <%- include css/menu.ejs %>
     <%- include scripts/menu.ejs %>
     <script type="text/javascript">
-	    $(function() {$("#pages-container").moveTo(<%= scrollTo %>);})
-	    $(window).on("load", function() {$('#loading').remove()});
+	    $(function() {$("#pages-container").moveTo(<%= scrollTo %>);});
+
+	    $(function() {
+		    var loadingCheckInterval = setInterval(function() {
+			    var elem = $('#home').find('> img');
+			    if (elem.height() === $(window).height()) {
+				    setTimeout(function() {$('#loading').remove();}, 100);
+				    clearInterval(loadingCheckInterval);
+			    }
+		    }, 100);
+	    });
     </script>
 </body>
 </html>
