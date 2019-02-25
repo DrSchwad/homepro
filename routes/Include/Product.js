@@ -16,7 +16,7 @@ function handleDisconnect() {
 			                                        // If you're also serving http, display a 503 error.
 			else {
 				connection.on('error', function(err) {
-					console.log('Db error', err);
+					console.log('Db error', err, "Inside Product.js: line 19");
 					if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
 						handleDisconnect();                       // lost due to either server restart, or a
 					} else {                                      // connnection idle timeout (the wait_timeout
@@ -60,11 +60,19 @@ var getProducts = function(category, productNo) {
 							titles.forEach(function (title) {
 								ret.titles.push(title['title']);
 							});
+						})
+						.catch(function (e) {
+							console.log(e, "Inside Product.js: line 65");
+							return false;
 						});
 				})
 				.then(function() {
 					return rows;
 				})
+				.catch(function (e) {
+					console.log(e, "Inside Product.js: line 73");
+					return false;
+				});
 		})
 		.then(function(rows) {
 			if (category !== "All" && rows.length !== 1) throw "Category not found!";
@@ -92,13 +100,17 @@ var getProducts = function(category, productNo) {
 						height: dimensions.height,
 						width: dimensions.width
 					});
+				})
+				.catch(function (e) {
+					console.log(e, "Inside Product.js: line 105");
+					return false;
 				});
 		})
 		.then(function() {
 			return ret;
 		})
 		.catch(function (e) {
-			console.log(e);
+			console.log(e, "Inside Product.js: line 113");
 			return false;
 		});
 };

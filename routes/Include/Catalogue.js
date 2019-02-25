@@ -16,7 +16,7 @@ function handleDisconnect() {
 			                                        // If you're also serving http, display a 503 error.
 			else {
 				connection.on('error', function(err) {
-					console.log('Db error', err);
+					console.log('Db error', err, "Inside Catalogue.js: line 19");
 					if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
 						handleDisconnect();                       // lost due to either server restart, or a
 					} else {                                      // connnection idle timeout (the wait_timeout
@@ -66,7 +66,7 @@ var getProducts = function() {
 			return ret;
 		})
 		.catch(function (e) {
-			console.log(e);
+			console.log(e, "Inside Catalogue.js: line 69");
 			return false;
 		});
 };
@@ -82,7 +82,7 @@ var getCategoryId = function(category) {
 			return parseInt(rows[0]['id']);
 		})
 		.catch(function (e) {
-			console.log(e);
+			console.log(e, "Inside Catalogue.js: line 85");
 			return false;
 		});
 };
