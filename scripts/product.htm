@@ -37,7 +37,7 @@
 			$('#breadcrumb')
 				.find('> .category')
 					.html(categories[categoryIndex].name) // Update the category text in the breadcrumb
-					.attr('href', '/catalogue/' + categories[categoryIndex].name) // and also the corresponding category link.
+					.attr('href', '/catalogue?view=' + categories[categoryIndex].name) // and also the corresponding category link.
 					.end()
 				.find('> .product-name')
 					.html(titles[at]); // Update the category text in the breadcrumb
@@ -115,7 +115,7 @@
 				categoryIndex = getCategory(at);
 				productId = (at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0));
 				window.history.pushState({at: at}, "",
-					'/homepro/product.php?' +
+					'/product.php?' +
 					'code=' + code + productId
 				);
 
@@ -145,7 +145,7 @@
 				categoryIndex = getCategory(at);
 				productId = (at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0));
 				window.history.pushState({at: at}, "",
-					'/homepro/product.php?' +
+					'/product.php?' +
 					'code=' + code + productId
                 );
 
