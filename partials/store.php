@@ -86,5 +86,5 @@
 </div>
 <div id="footer">
 	<div class="left">Copyright 2018 <span>homePro</span></div>
-	<a class="right" href="home.php?view=contact">Contact Us</a>
+	<a class="right" href="index.php?view=contact">Contact Us</a>
 </div>
