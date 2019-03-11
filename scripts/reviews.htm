@@ -1,0 +1,79 @@
+<script type="text/javascript">
+	var data = [
+		{
+			name: "Katherine Smith",
+			quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+			about: "Founder of Google inc.",
+			width: 149
+		},
+		{
+			name: "KathSmith",
+			quote: "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+			about: "Founder of Google inc. 2",
+			width: 111
+		},
+		{
+			name: "Katherine Smith Kather",
+			quote: "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+			about: "Founder of Google inc. 3",
+			width: 202
+		}
+	];
+	function loadUser(from, at) {
+		var $reviews = $('#reviews');
+		$reviews.find('> .reviews-img,' +
+			'> .reviews-img-blurred,' +
+			'.text-container > .text,' +
+			'.reviewer > .about').css('opacity', '0');
+		$reviews.find('.reviewer > .name').css('color', '#FFFFFF00');
+		if (data[from].width <= data[at].width) {
+			$reviews.find('.reviewer > .name').css('width', data[at].width);
+		}
+		setTimeout(function() {
+			$reviews.find('> .reviews-img').attr('src', 'img/imgmin/reviews/users/' + at + '.png');
+			$reviews.find('> .reviews-img-blurred').attr('src', 'img/imgmin/reviews/users/' + at + '-blurred.png');
+			$reviews.find('.text-container > .text').html(data[at].quote);
+			$reviews.find('.reviewer > .name').html(data[at].name);
+			if (data[from].width > data[at].width) {
+				$reviews.find('.reviewer > .name').css('width', data[at].width);
+			}
+			$reviews.find('.reviewer > .about').html(data[at].about);
+			$reviews.find('' +
+			'> .reviews-img,' +
+			'> .reviews-img-blurred,' +
+			'.text-container > .text,' +
+			'.reviewer > .name,' +
+			'.reviewer > .about').css('opacity', '1');
+			$reviews.find('.reviewer > .name').css('color', '#FFFFFFFF');
+		}, 500, $reviews);
+	}
+	$(function() {
+		var at = 0, from, TOT_USERS = 3;
+		var $reviews = $('#reviews');
+		$reviews.find('.navigation > .next').on('click', function() {
+			from = at;
+			at = (at + 1) % TOT_USERS;
+			loadUser(from, at);
+		});
+		var $reviews = $('#reviews');
+		$reviews.find('.navigation > .previous').on('click', function() {
+			from = at;
+			at = (at - 1 + TOT_USERS) % TOT_USERS;
+			loadUser(from, at);
+		});
+		loadUser(0, 0);
+
+		$reviews.find('.navigation .previous').hover(function() {
+			$(this).find('img').attr('src', 'img/reviews/left-arrow-white.png');
+		},
+		function() {
+			$(this).find('img').attr('src', 'img/reviews/left-arrow-grey.png');
+		});
+		$reviews.find('.navigation .next').hover(function() {
+			$(this).find('img').attr('src', 'img/reviews/right-arrow-white.png');
+		},
+		function() {
+			$(this).find('img').attr('src', 'img/reviews/right-arrow-grey.png');
+		});
+	});
+</script>

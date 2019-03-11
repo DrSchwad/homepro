@@ -1,0 +1,23 @@
+<script type="text/javascript" src="external/onepage-scroll/jquery.onepage-scroll.js"></script>
+<link rel='stylesheet' type='text/css' href='external/onepage-scroll/onepage-scroll.css'>
+<script type="text/javascript">
+    var $pagesContainer = $("#pages-container");
+    var $bulletContainers = $('#nav-bullets').find('> .bullet-container');
+    $pagesContainer.onepage_scroll({
+		sectionContainer: "section",
+		easing: "ease-in-out",
+        animationTime: 600,
+        pagination: false,
+        responsiveFallback: 600,
+        loop: false,
+        beforeMove: function(index) {
+            $bulletContainers.removeClass('active');
+			$('#nav-bullets').find('> .bullet-container:nth-child(' + index + ')').addClass('active');
+			if (index === 5) showTexts();
+			else hideTexts();
+        }
+    });
+    $bulletContainers.on('click', function() {
+        $pagesContainer.moveTo($bulletContainers.index(this) + 1);
+    });
+</script>

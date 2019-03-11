@@ -1,0 +1,269 @@
+<script type="text/javascript">
+	$(function() {
+		var at, total, cycleLength, categories = [], dimensions = [], categoryCodes = [], titles = [];
+		var $productNav = $("#product-nav");
+
+		var getCategory = function(id) { // Get category id from image id.
+			var i;
+			for (i = 0; id > categories[i].till; i++);
+			return i;
+		}
+		var getImageDimensions = function(at) { // Get calculated responsive dimensions of image.
+			var height, width;
+
+			height = Math.max(.4 * $(window).height(), Math.min(dimensions[at - 1].height, .7 * $(window).height()));
+			width = Math.max(.3 * $(window).width(), Math.min(dimensions[at - 1].width, .6 * $(window).width()));
+			height = Math.min(height, width * dimensions[at - 1].height / dimensions[at - 1].width);
+			width = Math.min(width, height * dimensions[at - 1].width / dimensions[at - 1].height);
+			return {
+				height: height,
+				width: width
+			}
+		}
+
+		var imageChangeTimeout; // A timeout that triggers when the previous image has been faded out, so that we can
+								// safely update it with the new product image now.
+
+		var updateImage = function(at) {
+			var $image = $('#product-picture').find('> .image'); // The product image is set as the background image
+																 // of this div element.
+
+			$image.css('opacity', '0'); // First fade out the image before changing it.
+
+			var currentImageDimensions = getImageDimensions(at); // Dimensions of the new image to be set.
+
+			var categoryIndex = getCategory(at); // Category of the new image to be set.
+
+			$('#breadcrumb')
+				.find('> .category')
+					.html(categories[categoryIndex].name) // Update the category text in the breadcrumb
+					.attr('href', '/catalogue/' + categories[categoryIndex].name) // and also the corresponding category link.
+					.end()
+				.find('> .product-name')
+					.html(titles[at]); // Update the category text in the breadcrumb
+
+			clearTimeout(imageChangeTimeout); // If any previous updating process was in queue, clear it, because
+											  // we have a new request(the current one) for a product image to be shown.
+
+			var productId = at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0); // The serial of the
+																				// product in it's own category.
+
+			imageChangeTimeout = setTimeout(function() { // Update the background image and size(animating the whole
+														 // changing process) after the previous image has been faded
+														 // out and fade in the new image.
+				$image.css({
+					'background-image': '' +
+						'url("img/product/' +
+						categories[categoryIndex].name +
+						'/' +
+						productId +
+						'.png' +
+						'")',
+					'background-size' : currentImageDimensions.width + 'px ' + currentImageDimensions.height + 'px'
+				});
+				$image.animate({
+						"height": currentImageDimensions.height,
+						"width": currentImageDimensions.width
+					},
+					500);
+				$image.css('opacity', '1');
+			}, 500);
+
+			$('#product-info')
+				.find('> .header')
+					.html(titles[at]) // Update the title of the product
+				.end()
+				.find('> .sub-header')
+					.html('#' + categoryCodes[categoryIndex] + productId); // Update the hash code of the product
+		}
+
+        var nextNthId = function(at, n) { // Returns the n'th id starting from at
+            return (((at - 1 + n + total) % total) + 1);
+        }
+		var previousId = function(at) {
+			return nextNthId(at, -1);
+		}
+		var nextId = function(at) {
+            return nextNthId(at, 1);
+        }
+
+		var changeProduct = function(d) {
+			if (d === -1) { // Go to the previous image
+				at = previousId(at);
+
+				// The new first image in the cycle needs to be included in the mini images.
+				var firstOne = previousId(at);
+				var categoryIndex = getCategory(firstOne);
+				var productId = firstOne - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0);
+
+				// Prepend the new first image and remove the previous last image.
+				$productNav.prepend('' +
+					'<img src="img/imgmin/product/' +
+					categories[categoryIndex].name +
+					'/' +
+					productId +
+					'.png" />' +
+					'');
+				$productNav.find("> img:last-child").remove();
+				// Set up the navigation controls to the new first and last images.
+				$productNav.find("> img").off('click');
+				$productNav.find("> img:first-child").on('click', function() {changeProduct(-1);});
+				$productNav.find("> img:last-child").on('click', function() {changeProduct(1);});
+
+				// Update window history with the current window state, so that when the user goes back in history,
+				// it shows the previous image, instead of taking the user to the previous browser page.
+				categoryIndex = getCategory(at);
+				productId = (at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0));
+				window.history.pushState({at: at}, "",
+					'/homepro/product.php?' +
+					'code=' + code + productId
+				);
+
+				updateImage(at); // Finally, update the actual image.
+			}
+			else if (d === 1) { // Same as going to the previous image, with the exceptions that:
+								// We have to include the new last image this time, and remove the previous first image.
+				at = nextId(at);
+
+				var lastOne = nextId(cycleLength - 2);
+				var categoryIndex = getCategory(lastOne);
+				var productId = lastOne - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0);
+
+				$productNav.append('' +
+					'<img src="img/imgmin/product/' +
+					categories[categoryIndex].name +
+					'/' +
+					productId +
+					'.png" />' +
+					'');
+				$productNav.find("> img:first-child").remove();
+
+				$productNav.find("> img").off('click');
+				$productNav.find("> img:first-child").on('click', function() {changeProduct(-1);});
+				$productNav.find("> img:last-child").on('click', function() {changeProduct(1);});
+
+				categoryIndex = getCategory(at);
+				productId = (at - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0));
+				window.history.pushState({at: at}, "",
+					'/homepro/product.php?' +
+					'code=' + code + productId
+                );
+
+				updateImage(at);
+			}
+		}
+
+		// Setting up 'up' navigation button colors and actions on interaction.
+		var $upArrow = $("#up-arrow");
+		$upArrow.hover(function () {
+			$(this).css('background-color', '#58667B').find('> img').attr('src', 'img/product/up-arrow-white.png');
+		}, function () {
+			$(this).css('background-color', 'transparent').find('> img').attr('src', 'img/product/up-arrow-grey.png');
+		});
+		$upArrow.on('click', function() {changeProduct(-1);});
+
+		// Setting up 'down' navigation button colors and actions on interaction.
+		var $downArrow = $("#down-arrow");
+		$downArrow.hover(function () {
+			$(this).css('background-color', '#58667B').find('> img').attr('src', 'img/product/down-arrow-white.png');
+		}, function () {
+			$(this).css('background-color', 'transparent').find('> img').attr('src', 'img/product/down-arrow-grey.png');
+		});
+		$downArrow.on('click', function() {changeProduct(1);});
+
+		// Enable keyboard arrow button interactions
+		document.onkeydown = function(e) {
+			e = e || window.event;
+			if (e.keyCode === 38) {
+				e.preventDefault();
+				changeProduct(-1);
+			}
+			else if (e.keyCode === 40) {
+				e.preventDefault();
+				changeProduct(1);
+			}
+		}
+
+		// When the user tries to go back in history, show the saved window state instead of taking the user to the
+		// previous browser page.
+		window.onpopstate = function(event) {
+			if (event.state === null) at = window.location.href.split('=').slice(-1)[0].substring(2);
+			else at = event.state.at;
+
+			$productNav.html('');
+
+			// Update the navigation images at right
+			for (var d = -1; d < Math.min(cycleLength - 1, total - 1); d++) {
+				var AT = nextNthId(at, d);
+				var categoryIndex = getCategory(AT);
+				var productId = AT - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0); // The serial of the
+                                																   // product in it's own category.
+				$productNav.append('' +
+					'<img src="img/imgmin/product/' +
+					categories[categoryIndex].name +
+					'/' +
+					productId +
+					'.png" />' +
+					'');
+			}
+
+			updateImage(at); // Update the actual image.
+		};
+
+		var initializeView = function() { // Fetch everything needed and set up the initial view of the picture frame.
+	        $.ajax({
+	            type: "POST",
+	            data: {code: code},
+	            success: function (data) {
+	                at = data.at;
+	                code = data.code;
+	                total = data.totalProducts;
+	                cycleLength = Math.min(3, total);
+	                categories = data.categories;
+	                dimensions = data.dimensions;
+	                categoryCodes = data.categoryCodes;
+	                titles = data.titles;
+	                $('#nav-menu').find('> a:nth-child(' + data.categoryId + ')').addClass('selected');
+
+	                // Try to show the image at 'at', and also the previous one and next one.
+                    // But if there's only two images in total, show the image at 'at' and the previous one.
+                    // And in case of only one image, show the image at 'at'.
+                    for (var d = -1; d < Math.min(cycleLength - 1, total - 1); d++) {
+                        var AT = nextNthId(at, d);
+
+                        var categoryIndex = getCategory(AT);
+
+                        var productId = AT - (categoryIndex > 0 ? categories[categoryIndex - 1].till : 0); // The serial of the
+                                                                                                        // product in it's own category.
+                        $productNav.append('' +
+                            '<img src="img/imgmin/product/' +
+                            categories[categoryIndex].name +
+                            '/' +
+                            productId +
+                            '.png" />' +
+                            '');
+                    }
+
+                    if (total === 1) $productNav.find("> img:nth-child(1)").css("opacity", "1"); // If there's only one image
+                                                                                // in total, then the image at 'at' will have
+                                                                                // to be placed at the first position in the mini
+                                                                                // navigation, so set the opacity of the first
+                                                                                // mini image to 1 instead of the second mini
+                                                                                // image.
+
+                    $('.loading').remove(); // Remove the loading screen
+                    updateImage(at); // Place the inquired picture
+                    // Set up navigation controls
+                    $productNav.find("> img").off('click');
+                    $productNav.find("> img:first-child").on('click', function() {changeProduct(-1);});
+                    $productNav.find("> img:last-child").on('click', function() {changeProduct(1);});
+	            },
+	            error: function (err) {
+	                console.log(err.responseText);
+	            },
+	            dataType: "json"
+	        });
+	    }
+	    initializeView();
+	});
+</script>
