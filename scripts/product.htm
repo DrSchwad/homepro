@@ -37,7 +37,7 @@
 			$('#breadcrumb')
 				.find('> .category')
 					.html(categories[categoryIndex].name) // Update the category text in the breadcrumb
-					.attr('href', '/catalogue?view=' + categories[categoryIndex].name) // and also the corresponding category link.
+					.attr('href', '/catalogue.php?view=' + categories[categoryIndex].name) // and also the corresponding category link.
 					.end()
 				.find('> .product-name')
 					.html(titles[at]); // Update the category text in the breadcrumb
